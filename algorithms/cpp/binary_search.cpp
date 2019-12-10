@@ -1,23 +1,20 @@
 #include <stdio.h>
 
-
-// Find the smallest i such that array[i] >= x
 int binary_search(int array[], int n, int x){
     if (n == 0) return -1;
 
     int low = 0, high = n - 1;
 
-    while (low < high){
+    while (low <= high){
         int mid = low + (high - low)/2;
-
+        
+        if (array[mid] == x)
+            return mid;
         if (x < array[mid])
-            high = mid;
-        else if (x > array[mid])
-            low = mid;
+            high = mid - 1;
+        else // x > array[mid]
+            low = mid + 1;
     }
-
-    if (array[low] == x)
-        return low;
 
     return -1;
 }
