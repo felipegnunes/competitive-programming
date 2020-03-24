@@ -9,7 +9,7 @@ int main()
     int N, C, M;
     cin >> N >> C >> M;
 
-    bool album[N] = {false};
+    bool album[N] = {false}; // Algumas versões do compilador não reconhecem esse comando
     
     int figurinhas_carimbadas[C];
     for (int i = 0; i < C; i++){

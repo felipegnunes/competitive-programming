@@ -1,5 +1,3 @@
-// Dijkstra
-
 #include <iostream>
 #include <limits.h>
 
@@ -44,46 +42,4 @@ void dijkstra(int V, int E, int source, int **adj, int dist[])
                 dist[v] = dist[u] + adj[u][v];
         }
     }
-}
-
-int main()
-{
-    int V, E, source;
-
-    cin >> V >> E;
-
-    int **adj = new int *[V];
-    for (int i = 0; i < V; i++)
-    {
-        adj[i] = new int[V];
-    }
-
-    for (int i = 0; i < V; i++)
-        for (int j = 0; j < V; j++)
-            adj[i][j] = 0;
-
-    for (int i = 0; i < E; i++)
-    {
-        int u, v, p;
-        cin >> u >> v >> p;
-        u--;
-        v--;
-        adj[u][v] = adj[v][u] = p;
-    }
-
-    cin >> source;
-    source--;
-
-    int dist[V];
-    dijkstra(V, E, source, adj, dist);
-
-    int min_dist = INT_MAX, max_dist = -1;
-    for (int u = 0; u < V; u++)
-    {
-        if (dist[u] < min_dist && u != source)
-            min_dist = dist[u];
-
-        max_dist = max(max_dist, dist[u]);
-    }
-    cout << max_dist - min_dist << endl;
 }
